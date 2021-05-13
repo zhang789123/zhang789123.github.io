@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>加入我们</title>
+        <style type="text/css">
+        	*{
+        	    margin: 0;
+        	    padding: 0;
+        	}
+        	a{
+        	    text-decoration: none;
+        	    color: black;
+        	}
+        	html{
+        	    font-family: "微软雅黑";
+        	    font-size: 16px;
+        	}
+        	html, body{
+        	    width: 100%;
+        	    height: 100%;
+        	    background-color: #F3F3F3;
+        	}
+        	ul{
+        	    list-style: none;
+        	}
+        	/* ------------顶部导航栏--------------- */
+        	.nav {
+        	    width: 100%;
+        	    background-color: rgba(0,0,0,0.8);
+        	    position: fixed;
+        	    left: 0;
+        	    top: 0;
+        	    padding:1% 0 0.3% 0 ;
+        	    text-align: center;
+        	    /* 调整标签的显示层级 值越大层级越考上 */
+        	    z-index:2;
+        	}
+        	/* 流式布局中:margin和padding 参考的是父标签的宽度!!! */
+        	.nav img{
+        	    width: 10%;
+        	}
+        	/* 
+        	 rem单位,始终参考的是html的font-size值!
+        	 例如:html的font-size:18px; 那么1rem = 18px
+        	 */
+        	.nav-title a{
+        	    color: #898989;
+        	    margin: 0 4%;
+        	    font-size: 0.9375rem;
+        	}
+        	.nav-title .active{
+        	    color: #f3f3f3;
+        	}
+        	.nav-title a:hover{
+        	    color: #F3F3F3;
+        	}
+        	/* ------------------内容模块----------------------- */
+        	.content{
+        	    width: 88%;
+        	    margin: 0 auto;
+        	    padding-top: 10%;
+        	}
+        	/* ------------轮播图模块----------------- */
+        	/* 分页器设置 */
+        	.swiper-pagination{
+        	    display: inline-block;
+        	    width: 88%;
+        	    text-align: center;
+        	}
+        	.swiper-pagination-bullet{
+        	    margin: 0 1%;
+        	}
+        	/* 选中的圆点的样式 */
+        	.swiper-pagination-bullet-active{
+        	    border: 1px #898989 solid;
+        	    background-color: #F3F3F3;
+        	}
+        	/* 设置按钮样式 */
+        	.last-btn{
+        	    background: url(../img/leftarrow_dyzj_1f.png) no-repeat center;
+        	    opacity: 0.5;
+        	}
+        	.next-btn{
+        	    background: url(../img/rightarrow_dyzj_1f.png) no-repeat center;
+        	    opacity: 0.5;
+        	}
+        	.last-btn::after, .next-btn::after{
+        	    content: ""  !important;
+        	}
+        	.last-btn:hover, .next-btn:hover{
+        	    opacity: 1;
+        	}
+        	/* -------------------网站简介--------------------- */
+        	/* 
+        	em仅仅只参考本标签的font-size
+        	rem只参考html的font-size
+        	 */
+        	.info{
+        	    padding: 15px 0;
+        	    margin-top: 40px;
+        	    text-indent: 2em;
+        	    font-family: "KaiTi";
+        	    font-size: 1.125rem;
+        	    line-height: 1.5625rem;
+        	    border: 1px solid lightgray;
+        	    border-left: none;
+        	    border-right: none;
+        	    color: dimgray;
+        	}
+        	
+        	/* -----------广告logo----------------- */
+        	.banner-logo{
+        	    margin: 5% 0;
+        	    text-align: center;
+        	}
+        	.banner-logo img{
+        	     margin: 0 0.75%;
+        	     width: 5%;
+        	}
+        	/* --------------------品牌内容模块--------------------- */
+        	.brand-content{
+        	    display: flex;
+        	    flex-wrap: wrap;
+        	    justify-content: space-between;
+        	    
+        	    
+        	}
+        	/* 设置具体的每一个小模块 */
+        	.box{
+        	    width: 31%;
+        	    background-color: white;
+        	    border-radius: 2%;
+        	    /* 
+        	    一般是5个参数值,分别意思是:
+        	    x轴偏移量,y轴偏移量,阴影的发散度,阴影的宽度,阴影的颜色
+        	     往右往下是正方向,是正值!
+        	     负值就是向上和向左.*/
+        	    box-shadow: 2px 2px 2px #e3e3e3;
+        	    text-align: center;
+        	    margin-bottom: 1.875rem;
+        	}
+        	.header{
+        	    position: relative;
+        	    color: white;
+        	}
+        	/* 流式布局中width参考的是父级的宽度 */
+        	.header img{
+        	    width: 100%;
+        	    /* 默认图片和div是有缝隙间距的 */
+        	    vertical-align: top;
+        	}
+        	.top{
+        	   width: 100%;
+        	    height: 100%;
+        	    background-color: rgba(0,0,0,0.4);
+        	    position: absolute;
+        	    left: 0;
+        	    top: 0;
+        	    display: flex;
+        	    flex-wrap: wrap;
+        	    align-content: center;
+        	    justify-content: center; 
+        	    /* 隐藏悬浮层 */
+        	    opacity: 0;
+        	    /* 添加过渡动画 */
+        	    transition: all 0.2s linear;
+        	}
+        	.top h1{
+        	    width: 100%;
+        	}
+        	.box:hover .top{
+        	    opacity: 1;
+        	}
+        	.header img, .top{
+        	    border-top-left-radius: 2%;
+        	    border-top-right-radius: 2%;
+        	}
+        	.footer{
+        	    padding: 5px 0;
+        	    color:#696969 ;
+        	    font-size: 1.125rem;
+        	}
+        	/* --------------底部网站信息------------------- */
+        	.bottom{
+        	    width: 100%;
+        	    background-color: #e0e0e0;
+        	    padding: 10px 0;
+        	    display: flex;
+        	}
+        	.bottom-left{
+        	    border-right: 1px solid lightslategray;
+        	    width: 47%;
+        	    padding-right: 3%;
+        	}
+        	.bottom-left img{
+        	    float: right;
+        	    width: 7%;
+        	    margin-left: 15px;
+        	}
+        	/* ------------- */
+        	.bottom-right {
+        	    padding-left: 2%;
+        	    font-size: 0.7rem;
+        	    color: #666666;
+        	    text-shadow: 1px 1px 1px white;
+        	}
+        	.bottom-right img{
+        	    width: 5.7rem;
+        	}
+        	.bottom-right li{
+        	    padding: 3px 0;
+        	}
+        	/* ------------------------ */
+        	@media  only screen and (max-width:1000px) {
+        	    html{
+        	        font-size: 16px;
+        	    }
+        	}
+        	
+        	@media  only screen and (max-width:960px) {
+        	    html{
+        	        font-size: 14px;
+        	    }
+        	}
+        	
+        	@media  only screen and (max-width:600px) {
+        	    html{
+        	        font-size: 12px;
+        	    }
+        	    .top h1{
+        	        font-size: 1.6rem;
+        	    }
+        	}
+        	
+        	@media  only screen and (max-width:500px) {
+        	    html{
+        	        font-size: 14px;
+        	    }
+        	    .box{
+        	        width: 48%;
+        	    }
+        	}
+        	
+			
+			
+			
+			.join-content{
+			    width: 480px;
+			    margin: 0 auto;
+			    padding-top: 10%;
+			}
+			#banner-img{
+			    width: 100%;
+			}
+			
+			/* ------------------------------ */
+			.first-content{
+			    margin: 1.875rem 0;
+			}
+			.first-content li{
+			    margin-bottom: 1.25rem;
+			}
+			.first-content li:first-child{
+			    font-size: 1rem;
+			    font-weight: bold;
+			    color: #696969;
+			}
+			.first-content li:nth-child(2){
+			    font-size: 0.8125rem;
+			    color: #696969;
+			    text-indent: 2em;
+			}
+			.first-content li:nth-child(3), .first-content li:nth-child(4){
+			    font-weight: bold;
+			}
+			
+			/* --------------第二个内容模块------------------ */
+			.join-box{
+			    width: 100%;
+			}
+			.join-box img{
+			    width: 20%;
+			}
+			.join-box .title{
+			    font-size: 0.875rem;
+			    font-weight: bold;
+			    margin-top: 0.9375rem;
+			}
+			.join-box .text{
+			    font-size: 0.75rem;
+			    color: #696969;
+			    margin-bottom: 0.9375rem;
+			}
+			.join-box span{
+			    font-size: 1.125rem;
+			    font-weight: bold;
+			}
+			.box-info{
+			    font-size: 0.75rem;
+			    color: #696969;
+			    text-indent: 2em;
+			    margin: 0.9375rem 0;
+			}
+			
+			
+			@media only screen and (max-width:700px) {
+			    .join-content {
+			        width: 70%;
+			        padding-top: 14%;
+			    }
+			    
+			    html{
+			        font-size: 14px;
+			    }
+			    
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+        </style>
+	</head>
+	<body>
+        <!-- 1.顶部的黑色导航栏 -->
+        <div class="nav">
+            <img src="./logo.png" >
+            <div class="nav-title">
+                <a href="index.html" >首页</a>
+                <a href="#work">产品类型</a>
+                <a href="#contact">联系我们</a>
+                <a href="joinUs.html" class="active">加入我们</a>
+            </div>
+        </div>
+        <!-- 2.内容部分 -->
+        <div class="join-content">
+            <img src="./joinus.jpg" id="banner-img" >
+            <!-- 内容的第一部分 -->
+            <ul class="first-content">
+                <li>加入我们</li>
+                <li>作为一支创意团队，我们从来不会止步于某种风格和形式，而是希望能够协同优秀的创作人，一起创造出更多有生命力的作品。</li>
+                <li>作品简历请发Email：1056058235@qq.com</li>    
+            </ul>
+             <!-- 内容的第二部分   -->
+             <div class="join-box">
+                 <span>
+                   技术经理
+                 </span>
+                 <p class="title">职务描述：</p>
+                 <p class="text">
+                   画出设计图纸并进行制作;；<br>
+                 </p>
+             </div>
+             <div class="join-box">
+                 <span>
+                   财务经理
+                 </span>
+                 <p class="title">职务描述：</p>
+                 <p class="text">
+                   负责基本的财务管理、各部分费用的统筹和管理、融资；<br>
+                 </p>
+             </div>
+             <div class="join-box">
+                 <span>
+                   市场经理
+                 </span>
+                 <p class="title">职务描述：</p>
+                 <p class="text">
+                   进行市场调研与渠道分析，完成现有的市场评估与未来的市场评估，产品营销;<br>
+                 </p>
+             </div>
+             <div class="join-box">
+                 <span>
+                   质检经理
+                 </span>
+                 <p class="title">职务描述：</p>
+                 <p class="text">
+                   负责检测绒花工艺品是否合格;<br>
+                 </p>
+             </div>
+			 <div class="join-box">
+			     <span>
+			       外交经理
+			     </span>	    
+			     <p class="title">职务描述：</p>
+			     <p class="text">
+			       负责推广和拉拢投资;<br>
+			     </p>
+			 </div>
+			 <div class="join-box">
+			     <span>
+			       运营经理
+			     </span>	    
+			     <p class="title">职务描述：</p>
+			     <p class="text">
+			      负责话题策划，文案撰写，媒体与公共关系的建立;<br>
+			     </p>
+			 </div>
+        </div>
+	    <!-- 3.底部的网站信息模块
+	 分为左右两个模块布局!
+	 -->
+	    <div class="bottom" id="contact">
+	     <!-- 左边内容 -->
+	     <div class="bottom-left">
+	         <img src="./contact1.jpg" >
+	         <img src="./contact2.jpg" >
+	         <img src="./contact3.jpg" >
+	     </div>
+	     <!-- 右边的内容 -->
+	     <ul class="bottom-right">
+	        <li><img src="./logo.png" ></li>
+	        <li> Ronghua | 荣华</li>
+	        <li> 地址：商丘师范学院新校区</li>
+	        <li>TEL : 123456789</li>
+	        <li>QQ :1056058235 </li> 
+	        <li>Email : 1056058235@qq.con</li>   
+	     </ul>
+	 </div>
+	
+    
+    </body>
+</html>
